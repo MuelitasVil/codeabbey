@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 int Double(int num){
@@ -12,14 +11,16 @@ void main() {
     int winsPlayerTwo = 0;
 
     List<String> plays = stdin.readLineSync().toString().trim().split(" ");
-    plays.map((play) => print(play));
-    print(plays.iterator);
+    String answer = plays.map((play) => play).toList().join(" ");
+    print("................");
+    print(answer);
 
-    plays.map((play) => play == "RS" || play == "SR" || play == "PR" 
-    ? winsPlayerOne++ : winsPlayerTwo++);
+    plays.map((play) => play == "RS" || play == "SP" || play == "PR" 
+    ? winsPlayerOne++ : winsPlayerTwo++).toList();
 
     print(winsPlayerOne);
     print(winsPlayerTwo);
+
 
 
   }
