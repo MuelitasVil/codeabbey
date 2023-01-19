@@ -6,7 +6,7 @@ void main(){
 
   correo = "Israel123@gmail.com";
 
-  mensaje = correo == "Israel123@gmail.com" ? "Es un correo " : "No es un correo"; 
+  mensaje = correo.contains("gmail") ? "Es un correo " : "No es un correo"; 
   print('$mensaje has ${mensaje.length}');
   print(mensaje);
   
