@@ -133,6 +133,9 @@ def OrganizarArchivoOthers(numero):
             
             archivo = open(Direccion,"w")
 
+            # Se borra el archvio orignal y se reescribe con las url organizadas y funcionales
+            # Finalmente se comprueba cuando falte solo un url para evitar el salto de linea final
+
             while(ListaUrl.IsEmpty() == False):
               if(ListaUrl.IsCasiEmpty() == False):
                 url = ListaUrl.pop_front()
@@ -195,8 +198,55 @@ def EliminarLink(numero, link):
         except:
             print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
+def InsertarLink(numero, link):
+        print(numero)
+        numeroArchivo = StringArchivo(numero)
+
+        try:
+            
+            ListaUrl = LinkedList()
+            ListaUrl.push_back(link)
+
+            contador = 0
+            Direccion = "C:\\Users\\mmart\\OneDrive\\Escritorio\\AutonomicJump\\challenges\\code\\codeabbey\\{}\\OTHERS.lst".format(numeroArchivo)
+
+            archivo = open(Direccion)
+            linea=archivo.readline()
+            print("Se abrio el archivo {} Others.lst ".format(numeroArchivo))
+
+            while linea != '':
+                UrlEliminadas = False
+                linea=archivo.readline()
+                try:
+                    datos = urllib.request.urlopen(linea)
+                except:
+                    UrlEliminadas = True
+                    contador = contador + 1 
+                
+                if(UrlEliminadas == False):
+                    ListaUrl.push_back(linea)
+            
+            print("Se han eliminado {} url's del archivo Other.lst {} ".format(contador, numeroArchivo))
+                
+            archivo.close()
+            remove(Direccion)
+            
+            archivo = open(Direccion,"w")
+
+            while(ListaUrl.IsEmpty() == False):
+              if(ListaUrl.IsCasiEmpty() == False):
+                url = ListaUrl.pop_front()
+                archivo.write("{}".format(url))
+              else:
+                url = ListaUrl.pop_front()
+                archivo.write("{}".format(url).strip())
+
+            print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
 
 
-OrganizarArchivoOthers(1)
+        except:
+            print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
+
+OrganizarYEliminarLinksDañados()
 
