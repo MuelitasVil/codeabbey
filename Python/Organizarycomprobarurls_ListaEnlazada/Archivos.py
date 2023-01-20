@@ -264,28 +264,24 @@ def InsertarLink(numero, link):
 palabra1 = "holaa"
 palabra2 = "buenas"
 
-OrganizarArchivoOthers(1)
-
-"""""
 # Insertar Links 
 #1
-InsertarLink(97, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.py")
+InsertarLink(97, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.py\n")
 #2
-InsertarLink(105, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q105.py")
+InsertarLink(105, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q105.py\n")
 #3
-InsertarLink(2,"https://raw.githubusercontent.com/Curio5813/CodeAbbey/master/problem002.py")
+InsertarLink(2,"https://raw.githubusercontent.com/Curio5813/CodeAbbey/master/problem002.py\n")
 #4
-InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/pro5.html")
+InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/pro5.html\n")
 #5
-InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/addition_array.html")
+InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/addition_array.html\n")
 #6
-InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_in_loop.html")
+InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_in_loop.html\n")
 #7
-InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_loop.html")
+InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_loop.html\n")
 #8
-InsertarLink(2,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumInLoop.java")
+InsertarLink(2,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumInLoop.java\n")
 #9
-InsertarLink(16,"https://raw.githubusercontent.com/oleksaT/codeabby/main/AverageOfAnArray.java")
+InsertarLink(16,"https://raw.githubusercontent.com/oleksaT/codeabby/main/AverageOfAnArray.java\n")
 #10 MY CODE
-InsertarLink(13,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/main/Dart/13%20%20Weighted%20sum%20of%20digits/muelasvill.dart")
-"""""
+InsertarLink(13,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/main/Dart/13%20%20Weighted%20sum%20of%20digits/muelasvill.dart\n")
