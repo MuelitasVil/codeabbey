@@ -1,6 +1,11 @@
 import urllib.request
 from os import remove
 
+class Link:
+  def __init__(self, link, linkComparar):
+    self.link = link
+    self.linkComparar = linkComparar
+
 # node structure
 class Node:
   def __init__(self, data):
@@ -20,7 +25,7 @@ class LinkedList:
       self.head = newNode
       return
 
-    if(self.head.data > newElement):
+    if(self.head.data.linkComparar > newElement.linkComparar):
         newNode.next = self.head
         self.head = newNode
         return
@@ -29,7 +34,7 @@ class LinkedList:
       temp = self.head
       insertMedium = False
       while(temp.next != None):
-        if(newElement > temp.data and newElement < temp.next.data):
+        if(newElement.linkComparar > temp.data.linkComparar and newElement.linkComparar < temp.next.data.linkComparar):
             insertMedium = True
             break
         temp = temp.next
@@ -45,7 +50,7 @@ class LinkedList:
     if(temp != None):
       print("The list contains:", end=" ")
       while (temp != None):
-        print(temp.data, end=" ")
+        print(temp.data.link, end=" ")
         temp = temp.next
       print()
     else:
@@ -94,6 +99,7 @@ def OrganizarYEliminarLinksDañados():
         OrganizarArchivoOthers(x)
        
  
+
 def OrganizarArchivoOthers(numero):
         print(numero)
         numeroArchivo = StringArchivo(numero)
@@ -120,11 +126,13 @@ def OrganizarArchivoOthers(numero):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False):
-                    ListaUrl.push_back(linea)
+                    link = Link(linea, linea.lower())
+                    ListaUrl.push_back(link)
             
             print("Se han eliminado {} url's del archivo Other.lst {} ".format(contador, numeroArchivo))
                 
@@ -138,10 +146,10 @@ def OrganizarArchivoOthers(numero):
 
             while(ListaUrl.IsEmpty() == False):
               if(ListaUrl.IsCasiEmpty() == False):
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url))
               else:
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url).strip())
             
             print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
@@ -171,11 +179,13 @@ def EliminarLink(numero, link):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False and linea != link):
-                    ListaUrl.push_back(linea)
+                    link = Link(linea, linea.lower())
+                    ListaUrl.push_back(link)
             
             print("Se han eliminado {} url's del archivo Other.lst {} ".format(contador, numeroArchivo))
                 
@@ -186,10 +196,10 @@ def EliminarLink(numero, link):
 
             while(ListaUrl.IsEmpty() == False):
               if(ListaUrl.IsCasiEmpty() == False):
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url))
               else:
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url).strip())
 
             print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
@@ -204,8 +214,9 @@ def InsertarLink(numero, link):
 
         try:
             
+            newlink = Link(link, link.lower())
             ListaUrl = LinkedList()
-            ListaUrl.push_back(link)
+            ListaUrl.push_back(newlink)
 
             contador = 0
             Direccion = "C:\\Users\\mmart\\OneDrive\\Escritorio\\AutonomicJump\\challenges\\code\\codeabbey\\{}\\OTHERS.lst".format(numeroArchivo)
@@ -220,11 +231,13 @@ def InsertarLink(numero, link):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False):
-                    ListaUrl.push_back(linea)
+                    link = Link(linea, linea.lower())
+                    ListaUrl.push_back(link)
             
             print("Se han eliminado {} url's del archivo Other.lst {} ".format(contador, numeroArchivo))
                 
@@ -235,10 +248,10 @@ def InsertarLink(numero, link):
 
             while(ListaUrl.IsEmpty() == False):
               if(ListaUrl.IsCasiEmpty() == False):
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url))
               else:
-                url = ListaUrl.pop_front()
+                url = ListaUrl.pop_front().link
                 archivo.write("{}".format(url).strip())
 
             print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
@@ -248,5 +261,31 @@ def InsertarLink(numero, link):
             print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
 
-OrganizarYEliminarLinksDañados()
+palabra1 = "holaa"
+palabra2 = "buenas"
 
+OrganizarArchivoOthers(1)
+
+"""""
+# Insertar Links 
+#1
+InsertarLink(97, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.py")
+#2
+InsertarLink(105, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q105.py")
+#3
+InsertarLink(2,"https://raw.githubusercontent.com/Curio5813/CodeAbbey/master/problem002.py")
+#4
+InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/pro5.html")
+#5
+InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/addition_array.html")
+#6
+InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_in_loop.html")
+#7
+InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_loop.html")
+#8
+InsertarLink(2,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumInLoop.java")
+#9
+InsertarLink(16,"https://raw.githubusercontent.com/oleksaT/codeabby/main/AverageOfAnArray.java")
+#10 MY CODE
+InsertarLink(13,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/main/Dart/13%20%20Weighted%20sum%20of%20digits/muelasvill.dart")
+"""""
