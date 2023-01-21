@@ -261,9 +261,6 @@ def InsertarLink(numero, link):
             print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
 
-palabra1 = "holaa"
-palabra2 = "buenas"
-
 # Insertar Links 
 #1
 InsertarLink(97, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.py\n")
@@ -274,14 +271,18 @@ InsertarLink(2,"https://raw.githubusercontent.com/Curio5813/CodeAbbey/master/pro
 #4
 InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/pro5.html\n")
 #5
-InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/addition_array.html\n")
+InsertarLink(11,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumDigits.java\n")
 #6
 InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_in_loop.html\n")
 #7
-InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_loop.html\n")
+InsertarLink(3,"https://raw.githubusercontent.com/Froststorm/Codeabby_learn/master/03_Sums%20in%20Loop.py\n")
 #8
 InsertarLink(2,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumInLoop.java\n")
 #9
 InsertarLink(16,"https://raw.githubusercontent.com/oleksaT/codeabby/main/AverageOfAnArray.java\n")
 #10 MY CODE
 InsertarLink(13,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/main/Dart/13%20%20Weighted%20sum%20of%20digits/muelasvill.dart\n")
+
+OrganizarYEliminarLinksDañados()
+palabra1 = "holaa"
+palabra2 = "buenas"
