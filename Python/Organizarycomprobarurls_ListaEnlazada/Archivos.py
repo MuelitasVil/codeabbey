@@ -160,14 +160,14 @@ def OrganizarArchivoOthers(numero):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error {} ".format(linea))
+                    print("Error 404 {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False):
 
                     extension = SacarExtension(linea)
-                    print(extension)
+                    print(extension, end= "\t")
                     if(extension[0] == "."):
                       extension = extension[1::]
                       link = Link(linea, extension)
@@ -244,14 +244,14 @@ def EliminarLink(numero, linkn):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error {} ".format(linea))
+                    print("Error 404 {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False or linea != linkn):
 
                     extension = SacarExtension(linea)
-
+                    print(extension, end= "\t")
                     if(extension[0] == "."):
                       extension = extension[1::]
                       link = Link(linea, extension)
@@ -323,7 +323,7 @@ def InsertarLink(numero, nlink):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error {} ".format(linea))
+                    print("Error 404 {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 

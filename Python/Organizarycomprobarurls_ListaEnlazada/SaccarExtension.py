@@ -11,7 +11,7 @@ def SacarExtension(self):
     if(extension[0] == "."):
         return extension[1::].lower()
     else:
-        return "zzzzzzzzz"
+        return "zzzzzzzzzzzz"
 
 
-print(SacarExtension("https://raw.githubusercontent.com/djs1193/codeabbey/master/q97pya"))
+print(SacarExtension("https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.pya"))
