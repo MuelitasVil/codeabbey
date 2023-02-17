@@ -160,14 +160,14 @@ def OrganizarArchivoOthers(numero):
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error 404 {} ".format(linea))
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
                 if(UrlEliminadas == False):
 
                     extension = SacarExtension(linea)
-                    print(extension, end= "\t")
+                    print(extension)
                     if(extension[0] == "."):
                       extension = extension[1::]
                       link = Link(linea, extension)
@@ -200,12 +200,8 @@ def OrganizarArchivoOthers(numero):
                 archivo.write("{}".format(url).strip())
               
             while(ListaUrlNoExtencion.IsEmpty() == False):
-              if(ListaUrlNoExtencion.IsCasiEmpty() == False):
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url))
-              else:
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url).strip())
+              url = ListaUrlNoExtencion.pop_front().link
+              archivo.write("{}".format(url))
 
             print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
 
@@ -213,12 +209,8 @@ def OrganizarArchivoOthers(numero):
         except:
             print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
-        
 
-
-def EliminarLink(numero, linkn):
-        print(numero)
-        numeroArchivo = StringArchivo(numero)
+def OrganizarArchivoOthersDireccion(Direccion):
 
         try:
             # Se crea la lsita enlazada para insertar en orden alfabetico 
@@ -228,11 +220,10 @@ def EliminarLink(numero, linkn):
             ListaUrlNoExtencion = LinkedList()
 
             contador = 0
-            Direccion = "C:\\Users\\mmart\\OneDrive\\Escritorio\\AutonomicJump\\challenges\\code\\codeabbey\\{}\\OTHERS.lst".format(numeroArchivo)
 
             archivo = open(Direccion)
             linea=archivo.readline()
-            print("Se abrio el archivo {} Others.lst ".format(numeroArchivo))
+            print("Se abrio el archivo {}".format(Direccion))
 
             while linea != '':
                 
@@ -241,17 +232,18 @@ def EliminarLink(numero, linkn):
 
                 UrlEliminadas = False
                 linea=archivo.readline()
+
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error 404 {} ".format(linea))
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
-                if(UrlEliminadas == False or linea != linkn):
+                if(UrlEliminadas == False):
 
                     extension = SacarExtension(linea)
-                    print(extension, end= "\t")
+                    print(extension)
                     if(extension[0] == "."):
                       extension = extension[1::]
                       link = Link(linea, extension)
@@ -259,13 +251,17 @@ def EliminarLink(numero, linkn):
                         print("Error : Extension repetida: "+link.link+"\n"+"Extencion :"+link.extension)
                     else:
                       extension = extension[1::]
+                      print("Link sin extencion "+linea)
                       link = Link(linea, extension)
                       if(ListaUrlNoExtencion.push_back(link) == False):
                         print("Error : Extension repetida: "+link.link+"\n"+"Extencion :"+link.extension)                   
 
 
-            print("Se han eliminado {} url's del archivo Other.lst {} ".format(contador, numeroArchivo))
+            print("Se han eliminado {} url's del archivo {} ".format(contador, Direccion))
                 
+            #print("--------------------------")
+            #ListaUrlNoExtencion.PrintList()
+            
             archivo.close()
             remove(Direccion)
             
@@ -280,18 +276,14 @@ def EliminarLink(numero, linkn):
                 archivo.write("{}".format(url).strip())
               
             while(ListaUrlNoExtencion.IsEmpty() == False):
-              if(ListaUrlNoExtencion.IsCasiEmpty() == False):
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url))
-              else:
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url).strip())
+              url = ListaUrlNoExtencion.pop_front().link
+              archivo.write("{}".format(url))
 
-            print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
+            print("Se organizo con exito el archivo {} Others.lst ".format(Direccion))
 
 
         except:
-            print("El archivo {}\others.lst no existe".format(numeroArchivo))
+            print("El archivo {}\others.lst no existe".format(Direccion))
 
 def InsertarLink(numero, nlink):
         
@@ -299,9 +291,7 @@ def InsertarLink(numero, nlink):
         numeroArchivo = StringArchivo(numero)
 
         try:
-            # Se crea la lsita enlazada para insertar en orden alfabetico 
-            # Se intenta acceder al orchivo other
-            
+
             ListaUrlExtencion = LinkedList()
             ListaUrlNoExtencion = LinkedList()
 
@@ -313,17 +303,14 @@ def InsertarLink(numero, nlink):
             print("Se abrio el archivo {} Others.lst ".format(numeroArchivo))
 
             while linea != '':
-                
-                # Se recorren los url y se comprueba si este sigue funcionando
-                # Si el url existe se inserta en una lista, sino se ignora
 
                 UrlEliminadas = False
-                linea=archivo.readline()
+                linea = archivo.readline()
 
                 try:
                     datos = urllib.request.urlopen(linea)
                 except:
-                    print("Error 404 {} ".format(linea))
+                    print("Error {} ".format(linea))
                     UrlEliminadas = True
                     contador = contador + 1 
                 
@@ -349,11 +336,7 @@ def InsertarLink(numero, nlink):
             remove(Direccion)
             
             archivo = open(Direccion,"w")
-
             extension = SacarExtension(nlink)
-
-
-            print("Funciona ?"+extension)
 
             if(extension == "."):
               extension = extension[1::]
@@ -380,12 +363,8 @@ def InsertarLink(numero, nlink):
                 archivo.write("{}".format(url).strip())
               
             while(ListaUrlNoExtencion.IsEmpty() == False):
-              if(ListaUrlNoExtencion.IsCasiEmpty() == False):
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url))
-              else:
-                url = ListaUrlNoExtencion.pop_front().link
-                archivo.write("{}".format(url).strip())
+              url = ListaUrlNoExtencion.pop_front().link
+              archivo.write("{}".format(url))
 
             print("Se organizo con exito el archivo {} Others.lst ".format(numeroArchivo))
 
@@ -393,27 +372,8 @@ def InsertarLink(numero, nlink):
         except:
             print("El archivo {}\others.lst no existe".format(numeroArchivo))
 
+OrganizarArchivoOthers(35)
 
-# Insertar Links 
-#1
-#InsertarLink(1, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q97.py10\n")
-#2
-#InsertarLink(105, "https://raw.githubusercontent.com/djs1193/codeabbey/master/q105.py\n")
-#3
-#InsertarLink(2,"https://raw.githubusercontent.com/Curio5813/CodeAbbey/master/problem002.py\n")
-#4
-#InsertarLink(5,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/pro5.html\n")
-#5
-#InsertarLink(11,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumDigits.java\n")
-#6
-#InsertarLink(2,"https://raw.githubusercontent.com/bijeshkawan/codeabbySolutions/master/sum_in_loop.html\n")
-#7
-#InsertarLink(3,"https://raw.githubusercontent.com/Froststorm/Codeabby_learn/master/03_Sums%20in%20Loop.py\n")
-#8
-#InsertarLink(2,"https://raw.githubusercontent.com/oleksaT/codeabby/main/SumInLoop.java\n")
-#9
-#InsertarLink(16,"https://raw.githubusercontent.com/oleksaT/codeabby/main/AverageOfAnArray.java\n")
-#10 MY CODE
 #InsertarLink(13,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/main/Dart/13%20%20Weighted%20sum%20of%20digits/muelasvill.dart\n")
-
-OrganizarYEliminarLinksDañados()
+#InsertarLink(14,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/Ejercicio14/Dart/14%20Moduar%20calculator/muelasvill.dart\n")
+#InsertarLink(49,"https://raw.githubusercontent.com/MuelitasVil/codeabbey/Ej49RSP/Dart/49%20RSP/muelasvill.dart\n")
