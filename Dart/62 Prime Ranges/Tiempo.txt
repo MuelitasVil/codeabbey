@@ -1,0 +1,4 @@
+Buscando ejercicio : 30
+Probar en python : 30
+dart 1 hora, 2 horas:
+buscar links y yml 1 hora;
